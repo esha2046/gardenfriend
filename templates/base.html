@@ -1,0 +1,118 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Garden Friend 🌱</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #f0f8f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .plant-card {
+            border: 2px solid #90EE90;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f9fff9;
+            position: relative;
+        }
+        .button {
+            background-color: #90EE90;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #7BC67B;
+        }
+        .water-button {
+            background-color: #87CEEB;
+        }
+        .needs-water {
+            background-color: #FFB6C1;
+        }
+        .warning {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .header-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #90EE90;
+            border-radius: 5px;
+        }
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #FF6B6B;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-list li {
+            background: #f0f8f0;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .plant-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background: #f0f8f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .tips {
+            background: #FFF8DC;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

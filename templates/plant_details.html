@@ -1,0 +1,55 @@
+<!-- templates/plant_details.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1><span class="header-icon">🪴</span>{{ plant.name }}</h1>
+    <a href="{{ url_for('home') }}" class="button">Back to Garden 🏡</a>
+    
+    <div class="plant-info">
+        <div class="info-card">
+            <h3>Basic Info</h3>
+            <p>Type: {{ plant.plant_type|title }}</p>
+            <p>Growth Stage: {{ plant.growth_stage|title }}</p>
+            <p>Planted: {{ plant.plant_date }}</p>
+        </div>
+        
+        <div class="info-card">
+            <h3>Care Requirements</h3>
+            <p>Sunlight: {{ plant.sunlight|title }}</p>
+            <p>Water every {{ plant.water_frequency }} days</p>
+            {% if plant.needs_water %}
+                <p class="warning">Needs water now! 💧</p>
+            {% else %}
+                <p>Next watering in {{ plant.days_until_water }} days</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="tips">
+        <h3>🌟 Care Tips</h3>
+        <ul>
+            {% for tip in tips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if plant.tasks %}
+    <div class="tasks">
+        <h3>📝 Tasks</h3>
+        <ul class="task-list">
+            {% for task in plant.tasks %}
+            <li>
+                {{ task }}
+                <a href="{{ url_for('complete_task', plant_id=plant.id, task_index=loop.index0) }}" 
+                   class="button">Complete ✓</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="notes">
+        <h3>📔 Notes</h3>
+        <p>{{ plant.notes }}</p>
+    </div>
+{% endblock %}

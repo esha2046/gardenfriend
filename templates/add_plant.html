@@ -1,0 +1,21 @@
+<!-- templates/add_plant.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1><span class="header-icon">🌱</span>Add New Plant</h1>
+    <form action="{{ url_for('home') }}">
+        <p>
+            <label>Plant Name:</label><br>
+            <input type="text" name="name" required>
+        </p>
+        <p>
+            <label>Planting Date:</label><br>
+            <input type="date" name="plant_date" required>
+        </p>
+        <p>
+            <label>Notes:</label><br>
+            <textarea name="notes" rows="4"></textarea>
+        </p>
+        <button type="submit" class="button">Add Plant 🌿</button>
+        <a href="{{ url_for('home') }}" class="button">Back to Garden 🏡</a>
+    </form>
+{% endblock %}

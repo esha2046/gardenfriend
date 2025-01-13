@@ -1,0 +1,35 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+{% block content %}
+    <h1><span class="header-icon">🌱</span>My Garden Friend</h1>
+    <a href="{{ url_for('add_plant') }}" class="button">Add New Plant 🌿</a>
+    
+    {% for plant in plants %}
+    <div class="plant-card">
+        {% if plant.tasks|length > 0 %}
+        <div class="badge">{{ plant.tasks|length }}</div>
+        {% endif %}
+        <h3>{{ plant.name }} 🪴</h3>
+        <p>Growth Stage: {{ plant.growth_stage }}</p>
+        <p>Type: {{ plant.plant_type|title }}</p>
+        <p>Sunlight Needs: {{ plant.sunlight|title }}</p>
+        <p>Planted on: {{ plant.plant_date }}</p>
+        {% if plant.last_watered %}
+            <p>Last watered: {{ plant.last_watered }}</p>
+            {% if plant.needs_water %}
+                <p class="warning">Needs water now! 💧</p>
+            {% else %}
+                <p>Next watering in {{ plant.days_until_water }} days</p>
+            {% endif %}
+        {% else %}
+            <p class="warning">Not watered yet!</p>
+        {% endif %}
+        <p>Notes: {{ plant.notes }}</p>
+        <a href="{{ url_for('water_plant', plant_id=plant.id) }}" 
+           class="button water-button {% if plant.needs_water %}needs-water{% endif %}">
+            Water Plant 💧
+        </a>
+        <a href="{{ url_for('plant_details', plant_id=plant.id) }}" class="button">View Details 🔍</a>
+    </div>
+    {% endfor %}
+{% endblock %}
