@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
-# Enhanced sample data with more details
 garden_data = [
     {
         'id': 1,
